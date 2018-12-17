@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Hello World</string>
+    <string name="hello_world">Hello World!</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="fragment_check">Fragment Check</string>
+    <string name="single_task">Single Task</string>
+    <string name="standard">Standard</string>
+    <string name="single_top">Single Top</string>
+    <string name="single_instance">Single Instance</string>
 </resources>
