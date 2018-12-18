@@ -1,16 +1,25 @@
 package com.metacube.helloworld;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "1234";
-    private Button singleInstance, singleTask, singleTop, standard;
+    private static final int PICK_CONTACT_REQUEST = 2;
+    private static final int GET_FRAGMENT_DATA = 3;
+    private Button singleInstance, singleTask, singleTop, standard, launchMapBtn,
+            launchDialerBtn, additionBtn, launchFragmentBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
         singleTask = findViewById(R.id.singleTask);
         singleTop = findViewById(R.id.singleTop);
         standard = findViewById(R.id.standard);
+        launchMapBtn = findViewById(R.id.launchMapBtn);
+        launchDialerBtn = findViewById(R.id.launchDialerBtn);
+        additionBtn = findViewById(R.id.additionBtn);
+        launchFragmentBtn = findViewById(R.id.launchFragmentBtn);
     }
 
     /**
@@ -60,6 +73,60 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), StandardActivity.class));
             }
         });
+        launchMapBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri location = Uri.parse("geo:26.7891175,75.8250578?z=10");
+                startActivity(new Intent(Intent.ACTION_VIEW, location));
+            }
+        });
+
+        launchDialerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(new Intent(Intent.ACTION_PICK, Uri.parse
+                        ("content://contacts")).setType(ContactsContract.CommonDataKinds.Phone
+                        .CONTENT_TYPE), PICK_CONTACT_REQUEST);
+            }
+        });
+
+        additionBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(new Intent(getApplicationContext(), AdditionActivity
+                        .class), 1);
+            }
+        });
+
+        launchFragmentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), FragmentCommunicationActivity
+                        .class));
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == 1) {
+            if (resultCode == Activity.RESULT_OK) {
+                String addition = data.getStringExtra("addition");
+                Toast.makeText(this, addition, Toast.LENGTH_SHORT).show();
+            }
+        } else if (requestCode == PICK_CONTACT_REQUEST) {
+            if (resultCode == Activity.RESULT_OK) {
+                Uri contactUri = data.getData();
+                String[] projection = {ContactsContract.CommonDataKinds.Phone.NUMBER};
+                Cursor cursor = getContentResolver()
+                        .query(contactUri, projection, null, null, null);
+                cursor.moveToFirst();
+                int column = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
+                String number = cursor.getString(column);
+                Toast.makeText(this, number, Toast.LENGTH_SHORT).show();
+
+            }
+        }
     }
 
     @Override

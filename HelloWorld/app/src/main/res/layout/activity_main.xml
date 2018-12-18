@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".MainActivity">
 
     <fragment
@@ -36,5 +37,44 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/standard" />
+
+    <LinearLayout
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/launchMapBtn"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/launch_map" />
+
+        <Button
+            android:id="@+id/launchDialerBtn"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/launch_dialer" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/additionBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/addition"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/launchFragmentBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/launch_fragment"
+        android:textAllCaps="false" />
 
 </LinearLayout>

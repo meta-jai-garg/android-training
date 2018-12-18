@@ -27,7 +27,9 @@
             android:launchMode="singleTop" />
         <activity
             android:name=".StandardActivity"
-            android:launchMode="standard"></activity>
+            android:launchMode="standard" />
+        <activity android:name=".AdditionActivity" />
+        <activity android:name=".FragmentCommunicationActivity"></activity>
     </application>
 
 </manifest>

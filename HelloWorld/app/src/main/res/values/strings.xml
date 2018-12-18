@@ -8,4 +8,16 @@
     <string name="standard">Standard</string>
     <string name="single_top">Single Top</string>
     <string name="single_instance">Single Instance</string>
+    <string name="launch_map">Launch Map</string>
+    <string name="launch_dialer">Launch Dialer</string>
+    <string name="addition">Addition</string>
+    <string name="enter_first_number">Enter First Number</string>
+    <string name="enter_second_number">Enter Second Number</string>
+    <string name="add">Add</string>
+    <string name="launch_fragment">Launch Fragment Communication</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="click_here">Click Here</string>
+    <string name="notify_fragment">Notify Fragment</string>
 </resources>
