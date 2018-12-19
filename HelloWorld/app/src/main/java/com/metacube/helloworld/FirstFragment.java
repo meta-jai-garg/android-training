@@ -7,31 +7,56 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.EditText;
 
 
 public class FirstFragment extends Fragment implements View.OnClickListener {
 
-    private Button clickBtn;
+    private Button clickBtn, addBtn;
     private int counter;
-    private Communicator communicator;
+    private EditText firstNumberEditText, secondNumberEditText;
+    private FragmentCommunicator fragmentCommunicator;
+    private ActivityCommunicator activityCommunicator;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_first, container, false);
+        View view = inflater.inflate(R.layout.fragment_first, container, false);
+        addBtn = view.findViewById(R.id.addBtn);
+        firstNumberEditText = view.findViewById(R.id.firstNumberEditText);
+        secondNumberEditText = view.findViewById(R.id.secondNumberEditText);
+        addBtn.setOnClickListener(this);
+        return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        communicator = (Communicator) getActivity();
+        fragmentCommunicator = (FragmentCommunicator) getActivity();
+        activityCommunicator = (ActivityCommunicator) getActivity();
         clickBtn = getActivity().findViewById(R.id.clickBtn);
         clickBtn.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        counter++;
-        communicator.respond("Button clicked "+counter+" time");
+        switch (v.getId()) {
+            case R.id.clickBtn: {
+                counter++;
+                fragmentCommunicator.passDataToFragment("Button clicked " + counter + " time");
+                break;
+            }
+            case R.id.addBtn: {
+                int firstNumber = Integer.parseInt(String.valueOf(firstNumberEditText.getText()));
+                int secondNumber = Integer.parseInt(String.valueOf(secondNumberEditText.getText()));
+                activityCommunicator.passDataToActivity(Integer.toString(firstNumber +
+                        secondNumber));
+                break;
+            }
+            default:
+                break;
+
+        }
     }
 }
