@@ -12,7 +12,6 @@ import android.widget.EditText;
 
 public class FirstFragment extends Fragment implements View.OnClickListener {
 
-    private Button clickBtn, addBtn;
     private int counter;
     private EditText firstNumberEditText, secondNumberEditText;
     private FragmentCommunicator fragmentCommunicator;
@@ -23,9 +22,11 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_first, container, false);
-        addBtn = view.findViewById(R.id.addBtn);
+        Button addBtn = view.findViewById(R.id.addBtn);
+        Button clickBtn = view.findViewById(R.id.clickBtn);
         firstNumberEditText = view.findViewById(R.id.firstNumberEditText);
         secondNumberEditText = view.findViewById(R.id.secondNumberEditText);
+        clickBtn.setOnClickListener(this);
         addBtn.setOnClickListener(this);
         return view;
     }
@@ -35,8 +36,6 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
         super.onActivityCreated(savedInstanceState);
         fragmentCommunicator = (FragmentCommunicator) getActivity();
         activityCommunicator = (ActivityCommunicator) getActivity();
-        clickBtn = getActivity().findViewById(R.id.clickBtn);
-        clickBtn.setOnClickListener(this);
     }
 
     @Override

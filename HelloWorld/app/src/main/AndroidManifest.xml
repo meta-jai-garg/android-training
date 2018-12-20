@@ -29,7 +29,8 @@
             android:name=".StandardActivity"
             android:launchMode="standard" />
         <activity android:name=".AdditionActivity" />
-        <activity android:name=".FragmentCommunicationActivity"></activity>
+        <activity android:name=".FragmentCommunicationActivity" />
+        <activity android:name=".FormControlActivity"></activity>
     </application>
 
 </manifest>
