@@ -30,7 +30,8 @@
             android:launchMode="standard" />
         <activity android:name=".AdditionActivity" />
         <activity android:name=".FragmentCommunicationActivity" />
-        <activity android:name=".FormControlActivity"></activity>
+        <activity android:name=".FormControlActivity" />
+        <activity android:name=".SavedDetailsActivity"></activity>
     </application>
 
 </manifest>

@@ -5,4 +5,5 @@
     <color name="colorAccent">#D81B60</color>
     <color name="colorFirstFragmentBackground">#fd8052</color>
     <color name="colorSecondFragmentBackground">#1e4b03</color>
+    <color name="colorBlack">#000000</color>
 </resources>

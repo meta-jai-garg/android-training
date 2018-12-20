@@ -16,4 +16,24 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="click_here">Click Here</string>
     <string name="notify_fragment">Notify Fragment</string>
+    <string name="form_control_activity">Form Control Activity</string>
+    <string name="enter_your_name">Enter Your Name</string>
+    <string name="enter_you_mobile">Enter You Mobile</string>
+    <string name="gender_male">Male</string>
+    <string name="gender_female">Female</string>
+    <string name="select_your_gender">Select Your Gender</string>
+    <string name="select_your_skills">Select Your Skills</string>
+    <string name="skill_java">Java</string>
+    <string name="skill_dot_net">.Net</string>
+    <string name="skill_java_script">JavaScript</string>
+    <string name="skill_react_native">React Native</string>
+    <string name="rate_yourself">Rate Yourself Out of 5 in Technical Aspect</string>
+    <string name="select_your_birth_date">Select Your Birth Date</string>
+    <string name="ready_for_a_challenge">Ready for a Challenge?</string>
+    <string name="name">Name</string>
+    <string name="mobile">Mobile</string>
+    <string name="gender">Gender</string>
+    <string name="skills">Skills</string>
+    <string name="self_rating">Self Rating</string>
+    <string name="dob">Date of Birth</string>
 </resources>

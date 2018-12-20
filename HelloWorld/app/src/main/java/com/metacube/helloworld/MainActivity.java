@@ -17,9 +17,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "1234";
     private static final int PICK_CONTACT_REQUEST = 2;
-    private static final int GET_FRAGMENT_DATA = 3;
     private Button singleInstance, singleTask, singleTop, standard, launchMapBtn,
-            launchDialerBtn, additionBtn, launchFragmentBtn;
+            launchDialerBtn, additionBtn, launchFragmentBtn, formControlActivityBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         launchDialerBtn = findViewById(R.id.launchDialerBtn);
         additionBtn = findViewById(R.id.additionBtn);
         launchFragmentBtn = findViewById(R.id.launchFragmentBtn);
+        formControlActivityBtn = findViewById(R.id.formControlActivityBtn);
     }
 
     /**
@@ -103,6 +103,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), FragmentCommunicationActivity
                         .class));
+            }
+        });
+
+        formControlActivityBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, FormControlActivity.class));
             }
         });
     }

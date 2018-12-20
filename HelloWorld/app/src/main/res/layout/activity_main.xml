@@ -79,5 +79,12 @@
             android:text="@string/launch_fragment"
             android:textAllCaps="false" />
 
+        <Button
+            android:id="@+id/formControlActivityBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/form_control_activity"
+            android:textAllCaps="false" />
+
     </LinearLayout>
 </ScrollView>
