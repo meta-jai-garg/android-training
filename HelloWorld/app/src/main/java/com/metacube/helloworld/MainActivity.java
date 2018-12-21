@@ -18,7 +18,8 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "1234";
     private static final int PICK_CONTACT_REQUEST = 2;
     private Button singleInstance, singleTask, singleTop, standard, launchMapBtn,
-            launchDialerBtn, additionBtn, launchFragmentBtn, formControlActivityBtn;
+            launchDialerBtn, additionBtn, launchFragmentBtn, formControlActivityBtn,
+            recyclerViewActivityBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         additionBtn = findViewById(R.id.additionBtn);
         launchFragmentBtn = findViewById(R.id.launchFragmentBtn);
         formControlActivityBtn = findViewById(R.id.formControlActivityBtn);
+        recyclerViewActivityBtn = findViewById(R.id.recyclerViewActivityBtn);
     }
 
     /**
@@ -110,6 +112,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, FormControlActivity.class));
+            }
+        });
+
+        recyclerViewActivityBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, RecyclerViewActivity.class));
             }
         });
     }

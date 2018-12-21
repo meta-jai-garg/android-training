@@ -1,4 +1,4 @@
-package com.metacube.helloworld;
+package com.metacube.helloworld.pojo;
 
 import android.os.Parcel;
 import android.os.Parcelable;

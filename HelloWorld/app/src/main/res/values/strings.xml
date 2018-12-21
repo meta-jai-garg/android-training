@@ -36,4 +36,7 @@
     <string name="skills">Skills</string>
     <string name="self_rating">Self Rating</string>
     <string name="dob">Date of Birth</string>
+    <string name="recycler_view_demo">Recycler View Demo</string>
+    <string name="static_image">Static Image</string>
+    <string name="dummy_text">Dummy Text</string>
 </resources>

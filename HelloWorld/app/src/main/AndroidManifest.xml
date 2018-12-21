@@ -31,7 +31,8 @@
         <activity android:name=".AdditionActivity" />
         <activity android:name=".FragmentCommunicationActivity" />
         <activity android:name=".FormControlActivity" />
-        <activity android:name=".SavedDetailsActivity"></activity>
+        <activity android:name=".SavedDetailsActivity" />
+        <activity android:name=".RecyclerViewActivity"></activity>
     </application>
 
 </manifest>
