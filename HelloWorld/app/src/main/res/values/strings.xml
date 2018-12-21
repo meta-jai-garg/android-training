@@ -39,4 +39,5 @@
     <string name="recycler_view_demo">Recycler View Demo</string>
     <string name="static_image">Static Image</string>
     <string name="dummy_text">Dummy Text</string>
+    <string name="launch_weather_activity">Launch Weather Activity</string>
 </resources>

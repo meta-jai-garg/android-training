@@ -93,5 +93,12 @@
             android:text="@string/recycler_view_demo"
             android:textAllCaps="false" />
 
+        <Button
+            android:id="@+id/launchWeatherActivityBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/launch_weather_activity"
+            android:textAllCaps="false" />
+
     </LinearLayout>
 </ScrollView>

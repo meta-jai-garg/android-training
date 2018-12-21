@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int PICK_CONTACT_REQUEST = 2;
     private Button singleInstance, singleTask, singleTop, standard, launchMapBtn,
             launchDialerBtn, additionBtn, launchFragmentBtn, formControlActivityBtn,
-            recyclerViewActivityBtn;
+            recyclerViewActivityBtn, launchWeatherActivityBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         launchFragmentBtn = findViewById(R.id.launchFragmentBtn);
         formControlActivityBtn = findViewById(R.id.formControlActivityBtn);
         recyclerViewActivityBtn = findViewById(R.id.recyclerViewActivityBtn);
+        launchWeatherActivityBtn = findViewById(R.id.launchWeatherActivityBtn);
     }
 
     /**
@@ -119,6 +120,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, RecyclerViewActivity.class));
+            }
+        });
+
+        launchWeatherActivityBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, WeatherInformationActivity.class));
             }
         });
     }
