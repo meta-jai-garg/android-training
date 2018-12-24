@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:shrinkColumns="1"
+        android:stretchColumns="*">
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="4dp">
+
+            <TextView
+                android:text="@string/city"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/cityText"
+                android:layout_column="1"
+                android:text=""
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="4dp">
+
+            <TextView
+                android:text="@string/country"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/countryText"
+                android:layout_column="1"
+                android:text=""
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="4dp">
+
+            <TextView
+                android:text="@string/temperature"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/temperatureText"
+                android:layout_column="1"
+                android:text=""
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="4dp">
+
+            <TextView
+                android:text="@string/humidity"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/humidityText"
+                android:layout_column="1"
+                android:text=""
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="4dp">
+
+            <TextView
+                android:text="@string/pressure"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/pressureText"
+                android:layout_column="1"
+                android:text=""
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="4dp">
+
+            <TextView
+                android:text="@string/wind_speed"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/windSpeedText"
+                android:layout_column="1"
+                android:text=""
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="4dp">
+
+            <TextView
+                android:text="@string/cloudiness"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/cloudinessText"
+                android:layout_column="1"
+                android:text=""
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="4dp">
+
+            <TextView
+                android:text="@string/weather_condition"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/weatherConditionText"
+                android:layout_column="1"
+                android:text=""
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="4dp">
+
+            <TextView
+                android:text="@string/longitude"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/longitudeText"
+                android:layout_column="1"
+                android:text=""
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="4dp">
+
+            <TextView
+                android:text="@string/Latitude"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/latitudeText"
+                android:layout_column="1"
+                android:text=""
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
+        </TableRow>
+
+    </TableLayout>
+</ScrollView>
