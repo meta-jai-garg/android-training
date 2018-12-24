@@ -15,9 +15,19 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.metacube.helloworld.mapper.JSONMapper;
 import com.metacube.helloworld.pojo.WeatherDetailPojo;
+
+import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -39,6 +49,7 @@ public class WeatherInformationActivity extends AppCompatActivity {
     private Bundle bundle;
     private WeatherDetailFragment weatherDetailFragment;
     private FragmentManager fragmentManager;
+    private String requestType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +71,8 @@ public class WeatherInformationActivity extends AppCompatActivity {
         bundle = new Bundle();
         weatherDetailFragment = new WeatherDetailFragment();
         fragmentManager = getSupportFragmentManager();
+        weatherDetailPojo = new WeatherDetailPojo();
+        requestType = getIntent().getStringExtra("requestType");
     }
 
     private void methodListener() {
@@ -69,8 +82,13 @@ public class WeatherInformationActivity extends AppCompatActivity {
                 cityTextView.clearFocus();
                 try {
 
-                    weatherDetailPojo = new GetWeatherData().execute(String.valueOf(parent
-                            .getItemAtPosition(position))).get();
+                    String selectedCity = String.valueOf(parent.getItemAtPosition(position));
+
+                    if (Constants.REQUEST_TYPE.equals(requestType)) {
+                        weatherDetailPojo = loadWeatherData(selectedCity);
+                    } else {
+                        weatherDetailPojo = new GetWeatherData().execute(selectedCity).get();
+                    }
                     bundle.putSerializable("weatherData", weatherDetailPojo);
                     weatherDetailFragment.setArguments(bundle);
                     fragmentManager
@@ -88,12 +106,41 @@ public class WeatherInformationActivity extends AppCompatActivity {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus && getSupportFragmentManager().findFragmentById(R.id
                         .weatherDetailFragmentContainer) != null) {
-                    getSupportFragmentManager().beginTransaction().remove(Objects.requireNonNull
+                    getSupportFragmentManager().beginTransaction().remove
                             (getSupportFragmentManager().findFragmentById(R.id
-                                    .weatherDetailFragmentContainer))).commit();
+                                    .weatherDetailFragmentContainer)).commit();
                 }
             }
         });
+    }
+
+    private WeatherDetailPojo loadWeatherData(String selectedCity) {
+        final ProgressDialog progressDialog = ProgressDialog.show(WeatherInformationActivity
+                        .this, "",
+                "Getting Result........");
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET,
+                Constants.BASE_URL + selectedCity + ",IN" + Constants.APP_ID,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+                        weatherDetailPojo = JSONMapper.responseToObject(response);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(WeatherInformationActivity.this,
+                                "Please try after sometime.",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+        return weatherDetailPojo;
     }
 
     private boolean isConnectedToNetwork() {
@@ -111,8 +158,6 @@ public class WeatherInformationActivity extends AppCompatActivity {
     private class GetWeatherData extends AsyncTask<String, Integer, WeatherDetailPojo> {
 
         private ProgressDialog progressDialog;
-        private static final String BASE_URL = "http://api.openweathermap.org/data/2.5/weather?q=";
-        private static final String APP_ID = "&units=metric&APPID=37a48452e709699e3c1e56370bd13724";
 
         @Override
         protected void onPreExecute() {
@@ -122,9 +167,8 @@ public class WeatherInformationActivity extends AppCompatActivity {
 
         @Override
         protected WeatherDetailPojo doInBackground(String... strings) {
-            WeatherDetailPojo weatherDetailPojo = new WeatherDetailPojo();
             try {
-                URL url = new URL(BASE_URL + strings[0] + ",IN" + APP_ID);
+                URL url = new URL(Constants.BASE_URL + strings[0] + ",IN" + Constants.APP_ID);
 
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                 InputStream stream = new BufferedInputStream(urlConnection.getInputStream());

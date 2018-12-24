@@ -51,4 +51,5 @@
     <string name="weather_condition">Weather Condition</string>
     <string name="longitude">Longitude</string>
     <string name="Latitude">Latitude</string>
+    <string name="launch_weather_activity_volley">Launch Weather Activity Volley</string>
 </resources>

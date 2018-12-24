@@ -100,5 +100,11 @@
             android:text="@string/launch_weather_activity"
             android:textAllCaps="false" />
 
+        <Button
+            android:id="@+id/launchWeatherActivityVolleyBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/launch_weather_activity_volley"
+            android:textAllCaps="false" />
     </LinearLayout>
 </ScrollView>
