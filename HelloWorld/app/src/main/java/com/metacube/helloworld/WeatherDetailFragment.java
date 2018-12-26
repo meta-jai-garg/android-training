@@ -49,7 +49,7 @@ public class WeatherDetailFragment extends Fragment {
         temperatureText.setText(Double.toString(weatherDetailPojo.getMain().getTemp()) + " \u2103");
         humidityText.setText(Integer.toString(weatherDetailPojo.getMain().getHumidity()) + "%");
         pressureText.setText(Integer.toString(weatherDetailPojo.getMain().getPressure()) + "hPa");
-//        windSpeedText.setText(Double.toString(weatherDetailPojo.getWind().getSpeed()) + "m/s");
+        windSpeedText.setText(Double.toString(weatherDetailPojo.getWind().getSpeed()) + "m/s");
         cloudinessText.setText(Integer.toString(weatherDetailPojo.getClouds().getAll()) + "%");
         WeatherPojo weatherPojo = weatherDetailPojo.getWeather().get(0);
         weatherConditionText.setText(weatherPojo.getDescription());

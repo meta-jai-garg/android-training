@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -41,7 +42,7 @@ import java.util.concurrent.ExecutionException;
 
 public class WeatherInformationActivity extends AppCompatActivity {
 
-    private String[] cities = {"Jaipur", "Jodhpur"};
+    private String[] cities = {"Ajmer", "Alwar", "Jodhpur"};
     private AutoCompleteTextView cityTextView;
     private ArrayAdapter<String> cityAdapter;
     private WeatherDetailPojo weatherDetailPojo;
@@ -69,9 +70,8 @@ public class WeatherInformationActivity extends AppCompatActivity {
         cityTextView.setAdapter(cityAdapter);
         weatherDetailFragmentContainer = findViewById(R.id.weatherDetailFragmentContainer);
         bundle = new Bundle();
-        weatherDetailFragment = new WeatherDetailFragment();
         fragmentManager = getSupportFragmentManager();
-        weatherDetailPojo = new WeatherDetailPojo();
+        weatherDetailFragment = new WeatherDetailFragment();
         requestType = getIntent().getStringExtra("requestType");
     }
 
@@ -79,22 +79,40 @@ public class WeatherInformationActivity extends AppCompatActivity {
         cityTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                InputMethodManager in = (InputMethodManager) getSystemService(Context
+                        .INPUT_METHOD_SERVICE);
+                in.hideSoftInputFromWindow(parent.getApplicationWindowToken(), 0);
                 cityTextView.clearFocus();
+
                 try {
 
                     String selectedCity = String.valueOf(parent.getItemAtPosition(position));
 
                     if (Constants.REQUEST_TYPE.equals(requestType)) {
-                        weatherDetailPojo = loadWeatherData(selectedCity);
+                        loadWeatherData(selectedCity, new VolleyCallback() {
+                            @Override
+                            public void onSuccess(WeatherDetailPojo weatherDetailPojo) {
+                                startFragment(weatherDetailPojo);
+                            }
+                        });
                     } else {
                         weatherDetailPojo = new GetWeatherData().execute(selectedCity).get();
+                        startFragment(weatherDetailPojo);
                     }
-                    bundle.putSerializable("weatherData", weatherDetailPojo);
-                    weatherDetailFragment.setArguments(bundle);
-                    fragmentManager
-                            .beginTransaction()
-                            .replace(R.id.weatherDetailFragmentContainer, weatherDetailFragment)
-                            .commit();
+//                    if (weatherDetailPojo != null) {
+//                        bundle.putSerializable("weatherData", weatherDetailPojo);
+//                        weatherDetailFragment.setArguments(bundle);
+//                        fragmentManager
+//                                .beginTransaction()
+//                                .replace(R.id.weatherDetailFragmentContainer,
+// weatherDetailFragment)
+//                                .commit();
+//                    } else {
+//                        Toast.makeText(WeatherInformationActivity.this, "Please try after " +
+//                                "sometime..", Toast.LENGTH_SHORT)
+//                                .show();
+//                    }
 
                 } catch (ExecutionException | InterruptedException e) {
                     e.printStackTrace();
@@ -114,7 +132,7 @@ public class WeatherInformationActivity extends AppCompatActivity {
         });
     }
 
-    private WeatherDetailPojo loadWeatherData(String selectedCity) {
+    private void loadWeatherData(String selectedCity, final VolleyCallback callback) {
         final ProgressDialog progressDialog = ProgressDialog.show(WeatherInformationActivity
                         .this, "",
                 "Getting Result........");
@@ -125,12 +143,13 @@ public class WeatherInformationActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         progressDialog.dismiss();
-                        weatherDetailPojo = JSONMapper.responseToObject(response);
+                        callback.onSuccess(JSONMapper.responseToObject(response));
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
                         Toast.makeText(WeatherInformationActivity.this,
                                 "Please try after sometime.",
                                 Toast.LENGTH_SHORT).show();
@@ -140,7 +159,6 @@ public class WeatherInformationActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
 
-        return weatherDetailPojo;
     }
 
     private boolean isConnectedToNetwork() {
@@ -193,5 +211,14 @@ public class WeatherInformationActivity extends AppCompatActivity {
         protected void onPostExecute(WeatherDetailPojo weatherDetail) {
             progressDialog.dismiss();
         }
+    }
+
+    private void startFragment(WeatherDetailPojo weatherDetailPojo) {
+        Log.d("12345", "startFragment: " + weatherDetailPojo.toString());
+        bundle.putSerializable("weatherData", weatherDetailPojo);
+        weatherDetailFragment.setArguments(bundle);
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.weatherDetailFragmentContainer, weatherDetailFragment).commit();
     }
 }

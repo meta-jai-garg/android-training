@@ -93,6 +93,7 @@ public class JSONMapper {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
         return weatherDetailPojo;
     }
 
