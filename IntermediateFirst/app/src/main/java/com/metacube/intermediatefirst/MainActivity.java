@@ -1,6 +1,11 @@
 package com.metacube.intermediatefirst;
 
 import android.Manifest;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.annotation.NonNull;
@@ -8,17 +13,19 @@ import android.support.annotation.RequiresApi;
 import android.support.design.button.MaterialButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
-import java.util.Arrays;
 
 public class MainActivity extends BaseActivity {
 
-    private MaterialButton grantMultiplePermissionBtn;
+    private MaterialButton grantMultiplePermissionBtn, defaultNotificationBtn,
+            customNotificationBtn;
+
+    private final String CHANNEL_ID = "System";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +38,15 @@ public class MainActivity extends BaseActivity {
                     CONTACT_PERMISSION_REQUEST_CODE);
         }
 
+        createNotificationChannel();
         init();
         methodListener();
     }
 
     private void init() {
         grantMultiplePermissionBtn = findViewById(R.id.grantMultiplePermissionBtn);
+        defaultNotificationBtn = findViewById(R.id.defaultNotificationBtn);
+        customNotificationBtn = findViewById(R.id.customNotificationBtn);
     }
 
     private void methodListener() {
@@ -48,6 +58,66 @@ public class MainActivity extends BaseActivity {
                         MULTIPLE_PERMISSIONS_REQUEST_CODE);
             }
         });
+
+        defaultNotificationBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(this, NotificationDetailsActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+            NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this,
+                    CHANNEL_ID)
+                    .setSmallIcon(android.R.drawable.ic_btn_speak_now)
+                    .setContentTitle(getString(R.string.notification_title))
+                    .setContentText(getString(R.string.notification_content))
+                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                    .setAutoCancel(true)
+                    .setStyle(
+                            new NotificationCompat.BigTextStyle()
+                                    .bigText(getString(R.string.notification_content))
+                    ).setContentIntent(pendingIntent);
+            NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from
+                    (this);
+            notificationManagerCompat.notify(1, notificationBuilder.build());
+        });
+
+        customNotificationBtn.setOnClickListener(v -> {
+            NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from
+                    (this);
+            NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this,
+                    CHANNEL_ID)
+                    .setSmallIcon(android.R.drawable.arrow_down_float)
+                    .setContentTitle("Image Download")
+                    .setContentText("Download in progress")
+                    .setPriority(NotificationCompat.PRIORITY_LOW)
+                    .setProgress(100, 0, false);
+            notificationManagerCompat.notify(2, notificationBuilder.build());
+
+            new Thread(() -> {
+                for (int i = 1; i <= 100; i++) {
+                    notificationBuilder.setProgress(100, i, false);
+                    notificationManagerCompat.notify(2, notificationBuilder.build());
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                notificationBuilder.setContentText("Download Complete")
+                        .setProgress(0, 0, false);
+                notificationManagerCompat.notify(2, notificationBuilder.build());
+            }).start();
+        });
+    }
+
+    private void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = getString(R.string.channel_name);
+            String description = getString(R.string.channel_description);
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
@@ -17,4 +16,25 @@
         android:layout_marginTop="16dp"
         android:text="@string/grant_multiple_permissions"
         android:textAllCaps="false" />
+
+    <android.support.design.button.MaterialButton
+        android:id="@+id/defaultNotificationBtn"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:text="@string/default_notification"
+        android:textAllCaps="false" />
+
+    <android.support.design.button.MaterialButton
+        android:id="@+id/customNotificationBtn"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:text="@string/custom_notification"
+        android:textAllCaps="false" />
+
 </LinearLayout>

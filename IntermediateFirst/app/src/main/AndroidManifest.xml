@@ -2,14 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.metacube.intermediatefirst">
 
-    <!--CAMERA-->
+    <!-- CAMERA -->
     <uses-permission android:name="android.permission.CAMERA" />
-    <!--CONTACTS-->
+    <!-- CONTACTS -->
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
-    <!--LOCATION-->
+    <!-- LOCATION -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <!--SMS-->
+    <!-- SMS -->
     <uses-permission android:name="android.permission.SEND_SMS" />
     <!-- Required for automatic insertion of the SMS code -->
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
@@ -28,6 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".NotificationDetailsActivity"></activity>
     </application>
 
 </manifest>
