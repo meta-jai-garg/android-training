@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">IntermediateFirst</string>
+    <string name="grant_multiple_permissions">Grant Multiple Permissions</string>
+    <string name="permission_dialog_message">Please allow permissions in order to use full functionality of application.</string>
+</resources>
