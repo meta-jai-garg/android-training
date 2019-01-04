@@ -4,7 +4,6 @@ import android.Manifest;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -19,6 +18,8 @@ import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.google.firebase.messaging.FirebaseMessaging;
+
 
 public class MainActivity extends BaseActivity {
 
@@ -26,6 +27,8 @@ public class MainActivity extends BaseActivity {
             customNotificationBtn;
 
     private final String CHANNEL_ID = "System";
+    private NotificationManagerCompat notificationManagerCompat;
+    private NotificationCompat.Builder notificationBuilder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,7 @@ public class MainActivity extends BaseActivity {
         }
 
         createNotificationChannel();
+        FirebaseMessaging.getInstance().subscribeToTopic("general");
         init();
         methodListener();
     }
@@ -47,6 +51,8 @@ public class MainActivity extends BaseActivity {
         grantMultiplePermissionBtn = findViewById(R.id.grantMultiplePermissionBtn);
         defaultNotificationBtn = findViewById(R.id.defaultNotificationBtn);
         customNotificationBtn = findViewById(R.id.customNotificationBtn);
+        notificationManagerCompat = NotificationManagerCompat.from(this);
+        notificationBuilder = new NotificationCompat.Builder(this, CHANNEL_ID);
     }
 
     private void methodListener() {
@@ -63,9 +69,7 @@ public class MainActivity extends BaseActivity {
             Intent intent = new Intent(this, NotificationDetailsActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
-            NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this,
-                    CHANNEL_ID)
-                    .setSmallIcon(android.R.drawable.ic_btn_speak_now)
+            notificationBuilder.setSmallIcon(android.R.drawable.ic_btn_speak_now)
                     .setContentTitle(getString(R.string.notification_title))
                     .setContentText(getString(R.string.notification_content))
                     .setPriority(NotificationCompat.PRIORITY_DEFAULT)
@@ -74,17 +78,11 @@ public class MainActivity extends BaseActivity {
                             new NotificationCompat.BigTextStyle()
                                     .bigText(getString(R.string.notification_content))
                     ).setContentIntent(pendingIntent);
-            NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from
-                    (this);
             notificationManagerCompat.notify(1, notificationBuilder.build());
         });
 
         customNotificationBtn.setOnClickListener(v -> {
-            NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from
-                    (this);
-            NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this,
-                    CHANNEL_ID)
-                    .setSmallIcon(android.R.drawable.arrow_down_float)
+            notificationBuilder.setSmallIcon(android.R.drawable.arrow_down_float)
                     .setContentTitle("Image Download")
                     .setContentText("Download in progress")
                     .setPriority(NotificationCompat.PRIORITY_LOW)
