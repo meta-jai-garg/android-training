@@ -10,4 +10,5 @@
     <string name="notification_content">This notification is good. You can do amazing stuff directly from here. You can actually do many things and in a while I\'m gonna tell you all those.</string>
     <string name="channel_name">System</string>
     <string name="channel_description">Require To Notify System Components</string>
+    <string name="start_handler">Start</string>
 </resources>
