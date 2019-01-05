@@ -22,6 +22,7 @@ public class BaseActivity extends AppCompatActivity implements ActivityCompat
 
     protected final int MULTIPLE_PERMISSIONS_REQUEST_CODE = 10;
     protected final int CONTACT_PERMISSION_REQUEST_CODE = 20;
+    protected final int SMS_PERMISSION_REQUEST_CODE = 30;
 
     protected final String[] multiplePermission = new String[]{
             Manifest.permission.CAMERA, Manifest.permission.ACCESS_COARSE_LOCATION

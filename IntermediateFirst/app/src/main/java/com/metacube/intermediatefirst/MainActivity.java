@@ -126,7 +126,8 @@ public class MainActivity extends BaseActivity {
             case CONTACT_PERMISSION_REQUEST_CODE: {
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show();
-                } else if (shouldShowRequestPermissionRationale(permissions[0])) {
+                } else if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                        permissions[0])) {
                     requestRunTimePermission(this, new String[]{Manifest.permission.READ_CONTACTS},
                             CONTACT_PERMISSION_REQUEST_CODE);
                 } else {

@@ -10,8 +10,7 @@
     <!-- LOCATION -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <!-- SMS -->
-    <uses-permission android:name="android.permission.SEND_SMS" />
-    <!-- Required for automatic insertion of the SMS code -->
+    <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
 
     <application
@@ -25,11 +24,13 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".NotificationDetailsActivity"></activity>
+        <activity android:name=".NotificationDetailsActivity" />
 
         <service android:name=".MyMessagingService">
             <intent-filter>
