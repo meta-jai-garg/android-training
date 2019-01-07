@@ -1,4 +1,4 @@
-package com.metacube.intermediatefirst;
+package com.metacube.intermediatefirst.activities;
 
 import android.Manifest;
 import android.app.Activity;
@@ -13,6 +13,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import com.metacube.intermediatefirst.R;
 
 import java.util.ArrayList;
 import java.util.List;

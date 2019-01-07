@@ -1,4 +1,4 @@
-package com.metacube.intermediatefirst;
+package com.metacube.intermediatefirst.activities;
 
 import android.Manifest;
 import android.app.NotificationChannel;
@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.metacube.intermediatefirst.R;
 
 
 public class MainActivity extends BaseActivity {
