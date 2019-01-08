@@ -12,4 +12,6 @@
     <string name="channel_description">Require To Notify System Components</string>
     <string name="start_handler">Start</string>
     <string name="downloaded_image_from_service">Downloaded Image from Service</string>
+    <string name="custom_drawable">Custom Drawable</string>
+    <string name="click_me">Click Me!</string>
 </resources>

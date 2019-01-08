@@ -17,4 +17,13 @@
             @style/Widget.MaterialComponents.Button.TextButton.Dialog
         </item>
     </style>
+
+    <style name="CustomTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+
 </resources>

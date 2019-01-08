@@ -37,7 +37,9 @@
         </service>
         <service android:name=".services.BackgroundService" />
 
-        <activity android:name=".activities.CustomDrawableActivity"></activity>
+        <activity
+            android:name=".activities.CustomDrawableActivity"
+            android:theme="@style/CustomTheme" />
     </application>
 
 </manifest>

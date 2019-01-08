@@ -16,6 +16,7 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -26,7 +27,7 @@ public class MainActivity extends BaseActivity {
 
     private MaterialButton grantMultiplePermissionBtn, defaultNotificationBtn,
             customNotificationBtn;
-
+    private Button customDrawableBtn;
     private final String CHANNEL_ID = "System";
     private NotificationManagerCompat notificationManagerCompat;
     private NotificationCompat.Builder notificationBuilder;
@@ -54,6 +55,7 @@ public class MainActivity extends BaseActivity {
         customNotificationBtn = findViewById(R.id.customNotificationBtn);
         notificationManagerCompat = NotificationManagerCompat.from(this);
         notificationBuilder = new NotificationCompat.Builder(this, CHANNEL_ID);
+        customDrawableBtn = findViewById(R.id.customDrawableBtn);
     }
 
     private void methodListener() {
@@ -105,6 +107,9 @@ public class MainActivity extends BaseActivity {
                 notificationManagerCompat.notify(2, notificationBuilder.build());
             }).start();
         });
+
+        customDrawableBtn.setOnClickListener(v -> startActivity(new Intent(this,
+                CustomDrawableActivity.class)));
     }
 
     private void createNotificationChannel() {
