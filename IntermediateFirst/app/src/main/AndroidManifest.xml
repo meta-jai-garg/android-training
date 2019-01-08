@@ -40,6 +40,9 @@
         <activity
             android:name=".activities.CustomDrawableActivity"
             android:theme="@style/CustomTheme" />
+        <activity
+            android:name=".activities.CustomViewActivity"
+            android:theme="@style/CustomTheme" />
     </application>
 
 </manifest>
