@@ -43,6 +43,9 @@
         <activity
             android:name=".activities.CustomViewActivity"
             android:theme="@style/CustomTheme" />
+        <activity
+            android:name=".activities.DialogActivity"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

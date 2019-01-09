@@ -16,6 +16,24 @@
         <item name="android:buttonBarPositiveButtonStyle" tools:targetApi="lollipop">
             @style/Widget.MaterialComponents.Button.TextButton.Dialog
         </item>
+        <item name="android:buttonBarNegativeButtonStyle" tools:targetApi="lollipop">
+            @style/Widget.MaterialComponents.Button.TextButton.Dialog
+        </item>
+    </style>
+
+    <style name="DialogAnimationSlideLeft" parent="CustomDialogTheme">
+        <item name="android:windowEnterAnimation">@anim/slide_left</item>
+        <item name="android:windowExitAnimation">@anim/slide_right</item>
+    </style>
+
+    <style name="DialogAnimationSlideUp" parent="CustomDialogTheme">
+        <item name="android:windowEnterAnimation">@anim/slide_up</item>
+        <item name="android:windowExitAnimation">@anim/slide_down</item>
+    </style>
+
+    <style name="DialogAnimationScale" parent="CustomDialogTheme">
+        <item name="android:windowEnterAnimation">@anim/scale_in</item>
+        <item name="android:windowExitAnimation">@anim/scale_out</item>
     </style>
 
     <style name="CustomTheme" parent="Theme.AppCompat.Light.DarkActionBar">

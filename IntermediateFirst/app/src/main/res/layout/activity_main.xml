@@ -55,4 +55,13 @@
         android:text="@string/custom_view"
         android:textAllCaps="false" />
 
+    <android.support.design.button.MaterialButton
+        android:id="@+id/customDialogBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:text="@string/custom_dialog"
+        android:textAllCaps="false" />
+
 </LinearLayout>

@@ -26,7 +26,7 @@ import com.metacube.intermediatefirst.R;
 public class MainActivity extends BaseActivity {
 
     private MaterialButton grantMultiplePermissionBtn, defaultNotificationBtn,
-            customNotificationBtn, customDrawableBtn, customViewBtn;
+            customNotificationBtn, customDrawableBtn, customViewBtn, customDialogBtn;
     private final String CHANNEL_ID = "System";
     private NotificationManagerCompat notificationManagerCompat;
     private NotificationCompat.Builder notificationBuilder;
@@ -56,6 +56,7 @@ public class MainActivity extends BaseActivity {
         notificationBuilder = new NotificationCompat.Builder(this, CHANNEL_ID);
         customDrawableBtn = findViewById(R.id.customDrawableBtn);
         customViewBtn = findViewById(R.id.customViewBtn);
+        customDialogBtn = findViewById(R.id.customDialogBtn);
     }
 
     private void methodListener() {
@@ -112,6 +113,9 @@ public class MainActivity extends BaseActivity {
                 CustomDrawableActivity.class)));
 
         customViewBtn.setOnClickListener(v -> startActivity(new Intent(this, CustomViewActivity
+                .class)));
+
+        customDialogBtn.setOnClickListener(v -> startActivity(new Intent(this, DialogActivity
                 .class)));
     }
 

@@ -67,7 +67,8 @@
         <com.metacube.intermediatefirst.custom_views.CustomButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:button_color="#ffe730"
+            android:layout_gravity="center"
+            app:button_color="#22de44"
             app:corner_radius="16dp" />
     </LinearLayout>
 

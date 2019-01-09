@@ -15,4 +15,23 @@
     <string name="custom_drawable">Custom Drawable</string>
     <string name="click_me">Click Me!</string>
     <string name="custom_view">Custom View</string>
+    <string name="custom_dialog">Custom Dialog</string>
+    <string name="show_dialog">Show Dialog</string>
+    <string name="list_dialog">Show List Dialog</string>
+    <string name="form_dialog">Show Form Dialog</string>
+    <string name="your_name">Your Name:</string>
+    <string name="your_email">Your Email:</string>
+    <string name="your_message">Your Message:</string>
+    <string-array name="shopping_item">
+        <item>Onion</item>
+        <item>Sausage</item>
+        <item>Milk</item>
+        <item>Garlic</item>
+        <item>Beef</item>
+        <item>Veggies</item>
+        <item>Olive</item>
+        <item>Cheese</item>
+        <item>Tuna</item>
+        <item>Mushrooms</item>
+    </string-array>
 </resources>
