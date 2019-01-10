@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">IntermediateSecond</string>
+    <string name="movie_image">Movie Image</string>
+    <string name="movie_name">Movie Name</string>
+</resources>
