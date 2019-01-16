@@ -2,4 +2,15 @@
     <string name="app_name">IntermediateSecond</string>
     <string name="movie_image">Movie Image</string>
     <string name="movie_name">Movie Name</string>
+    <string name="aquaman_desc">Aquaman is a 2018 American superhero film based on the DC Comics character of the same name, and distributed by Warner Bros. Pictures.</string>
+    <string name="aquaman">Aquaman</string>
+    <string name="fragment_animation">Fragment Animation</string>
+    <string name="slide_out">Slide Out</string>
+    <string name="slide_in">Slide IN</string>
+    <string name="flip_in">Flip In</string>
+    <string name="flip_out">Flip Out</string>
+
+    <string name="card_back_title">Boss Baby</string>
+    <string name="card_back_description"><![CDATA[Lorem ipsum dolor sit]]></string>
+    <string name="an_image">An Image</string>
 </resources>

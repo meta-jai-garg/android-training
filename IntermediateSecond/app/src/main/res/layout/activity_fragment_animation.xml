@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <android.support.design.button.MaterialButton
+            android:id="@+id/Button01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:onClick="startAnimation"
+            android:text="Rotate"
+            android:textAllCaps="false" />
+
+        <android.support.design.button.MaterialButton
+            android:id="@+id/Button02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:onClick="startAnimation"
+            android:text="Animate"
+            android:textAllCaps="false" />
+
+        <android.support.design.button.MaterialButton
+            android:id="@+id/Button03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:onClick="startAnimation"
+            android:text="Fade"
+            android:textAllCaps="false" />
+
+        <android.support.design.button.MaterialButton
+            android:id="@+id/Button04"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="startAnimation"
+            android:text="Group"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/test"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="30dp"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView1"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/ic_launcher_background"
+        android:src="@drawable/ic_launcher_foreground" />
+
+    <LinearLayout
+        android:id="@+id/fragmentAnimation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView1"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <android.support.design.button.MaterialButton
+            android:id="@+id/slideInBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:text="@string/slide_in"
+            android:textAllCaps="false" />
+
+        <android.support.design.button.MaterialButton
+            android:id="@+id/slideOutBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:text="@string/slide_out"
+            android:textAllCaps="false" />
+
+        <android.support.design.button.MaterialButton
+            android:id="@+id/flipInBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:onClick="startAnimation"
+            android:text="@string/flip_in"
+            android:textAllCaps="false" />
+
+        <android.support.design.button.MaterialButton
+            android:id="@+id/flipOutBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="startAnimation"
+            android:text="@string/flip_out"
+            android:textAllCaps="false" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/fragmentAnimation"
+        android:layout_margin="4dp" />
+</RelativeLayout>

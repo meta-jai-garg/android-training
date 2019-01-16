@@ -9,11 +9,12 @@ public class DetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
+        getWindow().setEnterTransition(null);
     }
 
-    @Override
-    public void onBackPressed() {
-        finish();
-        supportFinishAfterTransition();
-    }
+//    @Override
+//    public void onBackPressed() {
+//        supportFinishAfterTransition();
+//        finish();
+//    }
 }
