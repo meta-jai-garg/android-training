@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">FirstApp</string>
+    <string name="profile">Profile</string>
+    <string name="invite_friends">Invite Friends</string>
+    <string name="history">History</string>
+    <string name="need_help">Need Help?</string>
+    <string name="fill_6">About Us</string>
+    <string name="logout">Logout</string>
+    <string name="follow_us">Follow Us</string>
+    <string name="facebook_link">Facebook Link</string>
+    <string name="instagram_link">Instagram Link</string>
+    <string name="stores">STORES</string>
+    <string name="menu">MENU</string>
+    <string name="rewards">REWARDS</string>
+    <string name="inbox">INBOX</string>
+    <string name="more">MORE</string>
+</resources>
