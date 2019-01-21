@@ -2,8 +2,10 @@ package com.metacube.firstapp;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -50,5 +52,12 @@ public class MainActivity extends AppCompatActivity {
         return false;
     };
 
-
+    @Override
+    public void onAttachFragment(Fragment fragment) {
+        if (fragment instanceof StoreDetailFragment) {
+            bottomNavigation.setVisibility(View.GONE);
+        } else {
+            bottomNavigation.setVisibility(View.VISIBLE);
+        }
+    }
 }

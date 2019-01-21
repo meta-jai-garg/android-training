@@ -14,10 +14,21 @@
     <string name="rewards">REWARDS</string>
     <string name="inbox">INBOX</string>
     <string name="more">MORE</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="back">Back</string>
     <string name="store_details">Store Details</string>
     <string name="favourite">Favourite</string>
+    <string name="API_KEY">AIzaSyC7bUc_y7vQGcmlQp-C0w_vUATJOjg8moc</string>
+    <string name="directions">Directions</string>
+    <string name="distance">Distance</string>
+    <string name="dummy_distance">8 miles</string>
+    <string name="dummy_location_title">Bellastad</string>
+    <string name="dummy_location_address">45 McDermott Shores Suite 760</string>
+    <string name="united_states_92127">United States - 92127</string>
+    <string name="wifi">Wifi</string>
+    <string name="parking">Parking</string>
+    <string name="store_hours">Store Hours</string>
+    <string name="call_store">Call Store</string>
+    <string name="order_food">Order Food</string>
+    <string name="dummy_day">Wednesday</string>
+    <string name="dummy_store_timing">09:00 AM To 10:30 PM</string>
 </resources>
