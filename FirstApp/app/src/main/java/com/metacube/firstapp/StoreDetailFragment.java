@@ -1,14 +1,11 @@
 package com.metacube.firstapp;
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.button.MaterialButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -96,7 +93,31 @@ public class StoreDetailFragment extends Fragment implements OnMapReadyCallback 
 
         orderFoodBtn.setOnClickListener(v -> {
         });
+
+        viewPager.setPageTransformer(false, pageTransformer);
     }
+
+    private ViewPager.PageTransformer pageTransformer = (view, position) -> {
+        if (position >= 1) {
+            view.setAlpha(0.5f);
+            changeViewColor(view, false);
+        } else if (position < 1 && position >= 0) {
+            view.setAlpha(1);
+            changeViewColor(view, true);
+        } else {
+            view.setAlpha(0.5f);
+            changeViewColor(view, false);
+        }
+    };
+
+    private void changeViewColor(View view, boolean isVisible) {
+        final int color = isVisible ? getResources().getColor(R.color.rouge) :
+                getResources().getColor(R.color.brown_grey);
+        ((TextView) view.findViewById(R.id.day_tv)).setTextColor(color);
+        view.findViewById(R.id.line_view).setBackgroundColor(color);
+        ((TextView) view.findViewById(R.id.store_timing_tv)).setTextColor(color);
+    }
+
 
     @Override
     public void onMapReady(GoogleMap googleMap) {

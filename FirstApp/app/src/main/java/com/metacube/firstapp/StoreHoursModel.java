@@ -24,4 +24,5 @@ public class StoreHoursModel {
     public void setTiming(String timing) {
         this.timing = timing;
     }
+
 }
