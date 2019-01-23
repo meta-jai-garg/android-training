@@ -13,16 +13,8 @@ public class StoreHoursModel {
         return day;
     }
 
-    public void setDay(String day) {
-        this.day = day;
-    }
-
     public String getTiming() {
         return timing;
-    }
-
-    public void setTiming(String timing) {
-        this.timing = timing;
     }
 
 }

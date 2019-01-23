@@ -1,6 +1,5 @@
 package com.metacube.firstapp;
 
-import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -24,11 +23,15 @@ public class MoreDetailFragment extends Fragment implements View.OnClickListener
     private Integer[] mThumbIds = null;
     private String[] mTexts = null;
 
+    public static MoreDetailFragment newInstance() {
+        return new MoreDetailFragment();
+    }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.frag_more, container, false);
+        View view = inflater.inflate(R.layout.fragment_more_detail, container, false);
         init(view);
 
         facebookLinkImg.setOnClickListener(this);
@@ -36,6 +39,7 @@ public class MoreDetailFragment extends Fragment implements View.OnClickListener
 
         return view;
     }
+
 
     private void init(View view) {
         mThumbIds = new Integer[]{R.drawable.profile, R.drawable.invite_friends, R.drawable
@@ -50,7 +54,6 @@ public class MoreDetailFragment extends Fragment implements View.OnClickListener
         instagramLinkImg = view.findViewById(R.id.instagramLinkImg);
 //        gridView.setAdapter(new GridAdapter(getContext(), mThumbIds, mTexts));
         layoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
-        ((GridLayoutManager) layoutManager).setSpanCount(2);
         adapter = new RecyclerViewGridAdapter(mThumbIds, mTexts);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(layoutManager);
