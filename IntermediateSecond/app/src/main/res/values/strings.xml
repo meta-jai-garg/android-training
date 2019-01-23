@@ -13,4 +13,5 @@
     <string name="card_back_title">Boss Baby</string>
     <string name="card_back_description"><![CDATA[Lorem ipsum dolor sit]]></string>
     <string name="an_image">An Image</string>
+    <string name="image_caching">Image Caching</string>
 </resources>

@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView movieImage;
     private TextView movieTitle, movieDesc;
     private RelativeLayout relativeLayout;
-    private MaterialButton fragmentAnimationBtn;
+    private MaterialButton fragmentAnimationBtn, imageCachingBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         movieTitle = findViewById(R.id.movieTitle);
         movieDesc = findViewById(R.id.movieDesc);
         fragmentAnimationBtn = findViewById(R.id.fragmentAnimationBtn);
+        imageCachingBtn = findViewById(R.id.imageCachingBtn);
     }
 
     private void methodListener() {
@@ -92,6 +93,8 @@ public class MainActivity extends AppCompatActivity {
 
         fragmentAnimationBtn.setOnClickListener(v -> startActivity(new Intent(this,
                 FragmentAnimationActivity.class)));
+        imageCachingBtn.setOnClickListener(v -> startActivity(new Intent(this,
+                ImageCachingActivity.class)));
     }
 
     private List<MoviePojo> prepareData() {

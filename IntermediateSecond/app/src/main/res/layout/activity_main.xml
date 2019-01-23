@@ -58,4 +58,12 @@
         android:layout_below="@id/movieCard"
         android:layout_centerInParent="true"
         android:text="@string/fragment_animation" />
+
+    <android.support.design.button.MaterialButton
+        android:id="@+id/imageCachingBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fragmentAnimationBtn"
+        android:layout_centerInParent="true"
+        android:text="@string/image_caching" />
 </RelativeLayout>
