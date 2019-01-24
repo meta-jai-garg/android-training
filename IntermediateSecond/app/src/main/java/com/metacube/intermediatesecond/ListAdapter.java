@@ -35,6 +35,6 @@ public class ListAdapter extends ArrayAdapter<MovieModelREST> {
         MovieModelREST modelREST = movieModelRESTS.get(position);
         movieImg.setImageBitmap(modelREST.getThumb());
         movieTitle.setText(modelREST.getTitle());
-        return super.getView(position, convertView, parent);
+        return view;
     }
 }
