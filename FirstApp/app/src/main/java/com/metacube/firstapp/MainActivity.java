@@ -2,12 +2,13 @@ package com.metacube.firstapp;
 
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationHost {
 
     private BottomNavigationView bottomNavigation;
 
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.fragmentContainer, StoreDetailFragment.newInstance())
+                    .replace(R.id.fragmentContainer, RewardsFragment.newInstance())
                     .commit();
         }
     }
@@ -35,13 +36,13 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Menu", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.navigation_rewards:
-                Toast.makeText(MainActivity.this, "Rewards", Toast.LENGTH_SHORT).show();
+                navigateTo(RewardsFragment.newInstance(), false);
                 return true;
             case R.id.navigation_inbox:
                 Toast.makeText(MainActivity.this, "Inbox", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.navigation_more:
-                Toast.makeText(MainActivity.this, "More", Toast.LENGTH_SHORT).show();
+                navigateTo(MoreDetailFragment.newInstance(), false);
                 return true;
         }
         return false;
@@ -54,5 +55,18 @@ public class MainActivity extends AppCompatActivity {
         } else {
             bottomNavigation.setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    public void navigateTo(Fragment fragment, boolean addToBackStack) {
+        FragmentTransaction transaction =
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragmentContainer, fragment);
+
+        if (addToBackStack) {
+            transaction.addToBackStack(null);
+        }
+        transaction.commit();
     }
 }
