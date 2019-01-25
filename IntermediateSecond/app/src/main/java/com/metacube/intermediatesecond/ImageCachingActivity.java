@@ -23,7 +23,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,9 +32,6 @@ public class ImageCachingActivity extends AppCompatActivity {
     private ListView listView;
     private ListAdapter listAdapter;
     private List<MovieModelREST> modelRESTS;
-    //    private ImageCache cache;
-    private File file;
-    private File mFilePath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +39,6 @@ public class ImageCachingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_image_caching);
         listView = findViewById(R.id.list_view);
         modelRESTS = new ArrayList<>();
-//        cache = ImageCache.getInstance();
-//        cache.initializeCache();
-        file = getCacheDir();
         final String url = "http://10.0.2.2:3000/movies";
         try {
             modelRESTS = new DownloadTask().execute(url).get();
@@ -75,15 +68,19 @@ public class ImageCachingActivity extends AppCompatActivity {
                 JSONArray jsonArray = new JSONArray(builder.toString());
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject object = jsonArray.getJSONObject(i);
-                    File f =
-                            readFileFromCache(Uri.parse(object.getString("url")).getLastPathSegment());
-                    if (f != null) {
-                        models.add(new MovieModelREST(object.getString("title"),
-                                BitmapFactory.decodeStream(new FileInputStream(f))));
-                    } else {
-                        models.add(new MovieModelREST(object.getString("title"),
-                                getImage(object.getString("url"))));
-                    }
+//                    File f =
+//                            readFileFromCache(Uri.parse(object.getString("url"))
+// .getLastPathSegment());
+//                    if (f != null) {
+//                        models.add(new MovieModelREST(object.getString("title"),
+//                                BitmapFactory.decodeStream(new FileInputStream(f))));
+//
+//                    } else {
+//                        models.add(new MovieModelREST(object.getString("title"),
+//                                getImage(object.getString("url"))));
+//                    }
+                    models.add(new MovieModelREST(object.getString("title"), object.getString(
+                            "url")));
                 }
                 is.close();
                 reader.close();
@@ -126,7 +123,6 @@ public class ImageCachingActivity extends AppCompatActivity {
                 file = new File(getApplicationContext().getCacheDir(), fileName);
                 stream = new FileOutputStream(file);
                 bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } finally {
@@ -137,7 +133,6 @@ public class ImageCachingActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-//            return file.getAbsolutePath();
         }
 
         private File readFileFromCache(String fileName) {

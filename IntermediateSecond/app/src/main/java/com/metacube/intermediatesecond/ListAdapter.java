@@ -14,6 +14,7 @@ public class ListAdapter extends ArrayAdapter<MovieModelREST> {
 
     private Context context;
     private List<MovieModelREST> movieModelRESTS;
+    private ImageDownloader imageDownloader;
 
     private static class ViewHolder {
         ImageView movieImg;
@@ -24,6 +25,7 @@ public class ListAdapter extends ArrayAdapter<MovieModelREST> {
         super(context, resources, movieModelRESTS);
         this.context = context;
         this.movieModelRESTS = movieModelRESTS;
+        imageDownloader = new ImageDownloader();
     }
 
     @Override
@@ -33,7 +35,8 @@ public class ListAdapter extends ArrayAdapter<MovieModelREST> {
         ImageView movieImg = view.findViewById(R.id.movie_img);
         TextView movieTitle = view.findViewById(R.id.movie_title);
         MovieModelREST modelREST = movieModelRESTS.get(position);
-        movieImg.setImageBitmap(modelREST.getThumb());
+//        movieImg.setImageBitmap(modelREST.getThumb());
+        imageDownloader.download(modelREST.getUrl(), movieImg, context);
         movieTitle.setText(modelREST.getTitle());
         return view;
     }
