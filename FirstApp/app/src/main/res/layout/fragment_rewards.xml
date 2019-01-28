@@ -1,18 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000"
     tools:context=".MainActivity">
 
+    <android.support.design.widget.AppBarLayout
+        style="@style/BottomSheet.Widget.Toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <ImageView
+        <Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/top_logo" />
+            </LinearLayout>
+        </Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/cover" />
+        android:layout_marginBottom="112dp"
+        android:gravity="center_horizontal|bottom"
+        android:orientation="vertical"
+        android:padding="8dp">
 
-    <include layout="@layout/bottom_sheet" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
 
+            <android.support.design.button.MaterialButton
+                android:id="@+id/earn_reward_btn"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="24dp"
+                android:padding="16dp"
+                android:text="@string/earn"
+                android:textSize="16sp"
+                app:rippleColor="@color/black"
+                app:strokeColor="@color/white"
+                app:strokeWidth="1dp" />
+
+            <android.support.design.button.MaterialButton
+                android:id="@+id/redeem_reward_btn"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="24dp"
+                android:padding="16dp"
+                android:text="@string/redeem"
+                android:textSize="16sp"
+                app:rippleColor="@color/black"
+                app:strokeColor="@color/white"
+                app:strokeWidth="1dp"
+                tools:ignore="RelativeOverlap" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <include layout="@layout/rewards_bottom_sheet" />
 
 </android.support.design.widget.CoordinatorLayout>

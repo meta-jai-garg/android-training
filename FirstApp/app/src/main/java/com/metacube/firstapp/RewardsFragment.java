@@ -1,35 +1,33 @@
 package com.metacube.firstapp;
 
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.annotation.NonNull;
+import android.support.design.button.MaterialButton;
+import android.support.v4.app.Fragment;
 import android.support.design.widget.BottomSheetBehavior;
-import android.support.v4.widget.ContentLoadingProgressBar;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 public class RewardsFragment extends Fragment {
 
     private BottomSheetBehavior bottomSheetBehavior;
-    private LinearLayout linearLayoutBSheet;
-    private ToggleButton tbUpDown;
-    private ListView listView;
-    private TextView txtCantante, txtCancion;
-    private ContentLoadingProgressBar progbar;
+    private LinearLayout linearLayoutBottomSheet;
+    private MaterialButton earnRewardBtn, redeemRewardBtn;
+    private ImageView upArrowImg;
+    private TextView swipeUpTv;
+    private RecyclerView rewardsRecyclerView;
+    private List<RewardsModel> rewardsModelList;
+    private RewardsRecyclerViewAdapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
 
     public RewardsFragment() {
     }
@@ -42,91 +40,92 @@ public class RewardsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_rewards, container, false);
-        init(view);
         fillListView();
-        tbUpDown.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-            } else {
-                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-            }
-        });
-
-        bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
-            @Override
-            public void onStateChanged(View view, int newState) {
-                if (newState == BottomSheetBehavior.STATE_EXPANDED) {
-                    tbUpDown.setChecked(true);
-                } else if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
-                    tbUpDown.setChecked(false);
-                }
-            }
-
-            @Override
-            public void onSlide(View view, float v) {
-            }
-        });
+        init(view);
+        methodListener();
         return view;
     }
 
-    private void fillListView() {
-        String[] firstName = {"50 Cent", "50 Cent", "50 Cent", "50 Cent", "50 Cent", "50 Cent",
-                "50 Cent", "50 Cent"};
-        String[] mail = {"Many Men", "Window Shopper",
-                "Candy Shop", "Just a lil bit", "I'm the man", "P.I.M.P", "Wanksta",
-                "Ayo technology"};
+    private void init(View view) {
+        linearLayoutBottomSheet = view.findViewById(R.id.bottomSheet);
+        bottomSheetBehavior = BottomSheetBehavior.from(linearLayoutBottomSheet);
+        earnRewardBtn = view.findViewById(R.id.earn_reward_btn);
+        redeemRewardBtn = view.findViewById(R.id.redeem_reward_btn);
+        upArrowImg = view.findViewById(R.id.up_arrow_img);
+        swipeUpTv = view.findViewById(R.id.swipe_up_tv);
+        rewardsRecyclerView = view.findViewById(R.id.rewards_recycler_view);
+        layoutManager = new LinearLayoutManager(getContext());
+        adapter = new RewardsRecyclerViewAdapter(rewardsModelList);
+        rewardsRecyclerView.setAdapter(adapter);
+        rewardsRecyclerView.setLayoutManager(layoutManager);
+    }
 
+    private void methodListener() {
+        earnRewardBtn.setOnClickListener(view -> {
+        });
 
-        ArrayList<Map<String, Object>> list = new ArrayList<>();
+        redeemRewardBtn.setOnClickListener(view -> {
+        });
 
+        upArrowImg.setOnClickListener(view -> bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED));
 
-        for (int i = 0; i < firstName.length; i++) {
-            Map<String, Object> listItem = new HashMap<>();
-            listItem.put("Singer", firstName[i]);
-            listItem.put("Title", mail[i]);
+        swipeUpTv.setOnClickListener(view -> bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED));
 
-            list.add(listItem);
-        }
+        bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(@NonNull View view, int i) {
+            }
 
-        this.listView.setAdapter(getAdapterListViewCT(list));
-
-        this.listView.setOnItemClickListener((parent, view, position, id) -> {
-            TextView txtSingerLV = view.findViewById(android.R.id.text1);
-            TextView txtSingLV = view.findViewById(android.R.id.text2);
-            txtCantante.setText(txtSingerLV.getText());
-            txtCancion.setText(txtSingLV.getText());
-            progbar.setProgress(getRandom());
+            @Override
+            public void onSlide(@NonNull View view, float v) {
+                upArrowImg.setAlpha(1 - v);
+                swipeUpTv.setAlpha(1 - v);
+            }
         });
     }
 
-    private SimpleAdapter getAdapterListViewCT(ArrayList<Map<String, Object>> list) {
-        return new SimpleAdapter(getActivity().getApplicationContext(), list,
-                android.R.layout.simple_list_item_2, new String[]{"Singer", "Title"},
-                new int[]{android.R.id.text1, android.R.id.text2}) {
-            @Override
-            public View getView(int position, View convertView, @NonNull ViewGroup parent) {
-                View view = super.getView(position, convertView, parent);
-                TextView txtFirstName = view.findViewById(android.R.id.text1);
-                txtFirstName.setTypeface(Typeface.DEFAULT_BOLD);
-                TextView txtMail = view.findViewById(android.R.id.text2);
-                txtMail.setTextColor(Color.DKGRAY);
-                return view;
-            }
-        };
-    }
-
-    private int getRandom() {
-        return (int) Math.floor(Math.random() * 100);
-    }
-
-    private void init(View view) {
-        linearLayoutBSheet = view.findViewById(R.id.bottomSheet);
-        bottomSheetBehavior = BottomSheetBehavior.from(linearLayoutBSheet);
-        tbUpDown = view.findViewById(R.id.toggleButton);
-        listView = view.findViewById(R.id.listView);
-        txtCantante = view.findViewById(R.id.txtCantante);
-        txtCancion = view.findViewById(R.id.txtCancion);
-        progbar = view.findViewById(R.id.progbar);
+    private void fillListView() {
+        rewardsModelList = new ArrayList<>();
+        rewardsModelList.add(
+                new RewardsModel(
+                        R.drawable.cover,
+                        getString(R.string.expire_in_3_days),
+                        getString(R.string.free_ramen),
+                        getString(R.string.reward_description)
+                )
+        );
+        rewardsModelList.add(
+                new RewardsModel(
+                        R.drawable.cover,
+                        getString(R.string.expire_in_3_days),
+                        getString(R.string.free_ramen),
+                        getString(R.string.reward_description)
+                )
+        );
+        rewardsModelList.add(
+                new RewardsModel(
+                        R.drawable.cover,
+                        getString(R.string.expire_in_3_days),
+                        getString(R.string.free_ramen),
+                        getString(R.string.reward_description)
+                )
+        );
+        rewardsModelList.add(
+                new RewardsModel(
+                        R.drawable.cover,
+                        getString(R.string.expire_in_3_days),
+                        getString(R.string.free_ramen),
+                        getString(R.string.reward_description)
+                )
+        );
+        rewardsModelList.add(
+                new RewardsModel(
+                        R.drawable.cover,
+                        getString(R.string.expire_in_3_days),
+                        getString(R.string.free_ramen),
+                        getString(R.string.reward_description)
+                )
+        );
     }
 
 }

@@ -31,4 +31,11 @@
     <string name="order_food">Order Food</string>
     <string name="dummy_day">Wednesday</string>
     <string name="dummy_store_timing">09:00 AM To 10:30 PM</string>
+    <string name="arrow_up">Arrow Up</string>
+    <string name="swipe_up_to_see_available_offers">Swipe up to see available offers</string>
+    <string name="earn">EARN</string>
+    <string name="redeem">REDEEM</string>
+    <string name="expire_in_3_days">Expire in 3 days</string>
+    <string name="free_ramen">Free Ramen!</string>
+    <string name="reward_description">When it comes to juice, we go the extra mile to offer you the quality and choice you deserve.</string>
 </resources>
