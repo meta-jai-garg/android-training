@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements NavigationHost {
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.fragmentContainer, RewardsFragment.newInstance())
+                    .replace(R.id.fragmentContainer, MigrationFragment.newInstance())
                     .commit();
         }
     }
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements NavigationHost {
 
     @Override
     public void onAttachFragment(Fragment fragment) {
-        if (fragment instanceof StoreDetailFragment) {
+        if (fragment instanceof StoreDetailFragment || fragment instanceof VerificationFragment) {
             bottomNavigation.setVisibility(View.GONE);
         } else {
             bottomNavigation.setVisibility(View.VISIBLE);

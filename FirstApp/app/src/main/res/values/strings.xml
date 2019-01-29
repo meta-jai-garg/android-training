@@ -38,4 +38,19 @@
     <string name="expire_in_3_days">Expire in 3 days</string>
     <string name="free_ramen">Free Ramen!</string>
     <string name="reward_description">When it comes to juice, we go the extra mile to offer you the quality and choice you deserve.</string>
+
+    <string name="verification">Verification</string>
+    <string name="please_enter_6_digit_code_sent_on">Please enter 6 digit code sent on</string>
+    <string name="mock_mail_id">john@doe.com</string>
+    <string name="resend_code"><u>Resend code</u></string>
+    <string name="need_help_underlined"><u>Need help?</u></string>
+    <string name="proceed">Proceed</string>
+    <string name="verify_later_text">You can verify later from your Profile Settings.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="email_description">Please provide the email associated with the current loyalty club.</string>
+    <string name="first_and_last_name">Your first and last name.</string>
+    <string name="password_description">Make it hard to crack!</string>
+    <string name="submit">Submit</string>
 </resources>
